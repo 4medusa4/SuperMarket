@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="income" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b2e5b235-7838-4735-8b1b-2df8252b499e">
+	<property name="ireport.zoom" value="1.1000000000000012"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="rangeStart" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="rangeEnd" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select invId, invDate, sum(invTotal) as Total from tbl_invoice WHERE invDate BETWEEN '2022-07-01' AND '2022-08-01' GROUP BY invDate;]]>
+	</queryString>
+	<field name="invId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="invDate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Total" class="java.lang.Double"/>
+	<background>
+		<band height="802" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="802" splitType="Stretch">
+			<lineChart>
+				<chart evaluationTime="Report">
+					<reportElement x="16" y="100" width="525" height="247" uuid="7847c5a2-64b3-4b51-bf4e-84a3a7701489"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Company Income"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{invDate}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{Total}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+			<staticText>
+				<reportElement x="0" y="0" width="258" height="53" uuid="6f364920-fdb9-4383-91d2-12136ed235b1"/>
+				<textElement>
+					<font fontName="Segoe UI" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Income Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="65" width="45" height="17" uuid="b74b9136-89b4-4cf3-875a-3ef1c0bd4ce6"/>
+				<text><![CDATA[From]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="145" y="65" width="45" height="17" uuid="fbddbd5c-ca56-4478-aeb0-8176e8f77318"/>
+				<text><![CDATA[To]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

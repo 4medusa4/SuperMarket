@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d5290f2-318b-42f9-a6bc-66deaec82128">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `tbl_product`;]]>
+	</queryString>
+	<field name="proId" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proType" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proQuantity" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proPrice" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proExDate" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proDescription" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="disRate" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="proDeleted" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band height="802" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="333" height="55" uuid="a1053b99-e931-4459-9ce7-3f53d4e9a050"/>
+				<textElement>
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock Availability]]></text>
+			</staticText>
+			<bar3DChart>
+				<chart isShowLegend="false" evaluationTime="Report">
+					<reportElement mode="Transparent" x="16" y="122" width="524" height="258" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" uuid="b588bc0e-4c74-4825-8ad0-2f7a57f9f3eb"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Stock Availability"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{proName}+" ("+$F{proId}+")"]]></categoryExpression>
+						<valueExpression><![CDATA[$F{proQuantity}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot xOffset="10.0">
+					<plot labelRotation="-60.0">
+						<seriesColor seriesOrder="0" color="#33CCFF"/>
+					</plot>
+					<itemLabel color="#333333">
+						<font fontName="Segoe UI" size="10" isItalic="true"/>
+					</itemLabel>
+					<categoryAxisFormat labelRotation="-60.0">
+						<axisFormat tickLabelMask="" verticalTickLabels="true"/>
+					</categoryAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Quantity in Hand"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat labelColor="#666666" axisLineColor="#FFFFFF"/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+		</band>
+	</title>
+</jasperReport>
